@@ -10,7 +10,9 @@ fun buildSignInRequest(): BeginSignInRequest {
         .setGoogleIdTokenRequestOptions(
             GoogleIdTokenRequestOptions.builder()
                 .setSupported(true)
+                // Shows all the available accounts to sign in.
                 .setFilterByAuthorizedAccounts(false)
+                // Your Server's client ID
                 .setServerClientId(R.string.web_client_id.toString())
                 .build()
         )

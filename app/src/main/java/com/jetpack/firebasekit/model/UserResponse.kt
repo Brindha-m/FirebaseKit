@@ -10,5 +10,6 @@ data class SignInResponse(
 data class UserData(
     val userId: String,
     val username: String?,
-    val profilePicture: String?
+    val profilePicture: String?,
+    val email: String?
 )

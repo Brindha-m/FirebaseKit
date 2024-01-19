@@ -15,7 +15,7 @@ class GoogleAuthClient(
     private val context: Context,
     private val oneTapClient: SignInClient,
 ) {
-    private val authClient = Firebase.auth
+    private val auth = Firebase.auth
 
     suspend fun signIn() {
         val result = try {
@@ -34,13 +34,14 @@ class GoogleAuthClient(
         val googleIdToken = credential.googleIdToken
         val googleCredential = GoogleAuthProvider.getCredential(googleIdToken, null)
         return try {
-            val user = authClient.signInWithCredential(googleCredential).await().user
+            val user = auth.signInWithCredential(googleCredential).await().user
             SignInResponse(
                 data = user?.run {
                     UserData(
                         userId = uid,
                         username = displayName,
-                        profilePicture = photoUrl.toString()
+                        profilePicture = photoUrl.toString(),
+                        email = email
                     )
                 },
                 errorMessage = null
@@ -58,7 +59,7 @@ class GoogleAuthClient(
     suspend fun signOut() {
         try {
             oneTapClient.signOut().await()
-            authClient.signOut()
+            auth.signOut()
         } catch(e: Exception) {
             e.printStackTrace()
             if(e is CancellationException) throw e
@@ -66,11 +67,12 @@ class GoogleAuthClient(
     }
 
 
-    fun getSignedInUser(): UserData? = authClient.currentUser?.run {
+    fun getSignedInUser(): UserData? = auth.currentUser?.run {
         UserData(
             userId = uid,
             username = displayName,
-            profilePicture = photoUrl?.toString()
+            profilePicture = photoUrl?.toString(),
+            email = email
         )
     }
 }
