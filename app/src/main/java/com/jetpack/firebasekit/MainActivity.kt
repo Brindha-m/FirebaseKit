@@ -3,21 +3,32 @@ package com.jetpack.firebasekit
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.jetpack.firebasekit.google_signin.data.AuthState
+import com.jetpack.firebasekit.google_signin.data.DataProvider
+import com.jetpack.firebasekit.google_signin.view.LoginScreen
+import com.jetpack.firebasekit.google_signin.view.navigation.MainBottomScreen
+import com.jetpack.firebasekit.google_signin.view.navigation.Screens
+import com.jetpack.firebasekit.google_signin.viewmodel.GoogleAuthViewModel
 import com.jetpack.firebasekit.ui.theme.FirebaseKitTheme
-import com.jetpack.firebasekit.view.LoginScreen
-import com.jetpack.firebasekit.view.RegisterScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -28,6 +39,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     MainScreen()
+
                 }
             }
         }
@@ -36,8 +48,12 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    authViewModel: GoogleAuthViewModel = hiltViewModel()
+) {
     val navController = rememberNavController()
+    val currentUser = authViewModel.currentUser.collectAsState().value
+    DataProvider.updateAuthState(currentUser)
 
     NavHost(
         startDestination = Screens.LoginScreen.route,
@@ -45,13 +61,11 @@ fun MainScreen() {
     ) {
 
         composable(Screens.LoginScreen.route) {
-            LoginScreen(navController = navController)
+            if (DataProvider.authState != AuthState.SignedOut) {
+                MainBottomScreen(mainNavController = navController)
+            } else {
+                LoginScreen(navHostController = navController, authViewModel)
+            }
         }
-        composable(Screens.RegisterScreen.route) {
-            RegisterScreen(navController = navController)
-        }
-
     }
-
-
 }

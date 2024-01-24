@@ -21,6 +21,7 @@ object DataProvider {
     var signOutResponse by mutableStateOf<SignOutResponse>(Success(false))
 
     var isAuthenticated by mutableStateOf(false)
+
     var isAnonymous by mutableStateOf(false)
 
     var authState by mutableStateOf(AuthState.SignedOut)

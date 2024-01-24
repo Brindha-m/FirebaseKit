@@ -17,5 +17,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "FirebaseKit"
 include(":app")
-include(":samplemodule")
-include(":mylibrary")
+

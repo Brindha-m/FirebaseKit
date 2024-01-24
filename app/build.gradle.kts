@@ -1,12 +1,28 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
+    // Add the Google services Gradle plugin
+    id("com.google.gms.google-services")
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
     id("kotlin-kapt")
+
 }
 
+
 android {
+
+    val apikeyPropertiesFile = rootProject.file("apiKeys.properties")
+    val apikeyProperties = Properties()
+
+    if (apikeyPropertiesFile.exists()) {
+        apikeyProperties.load(apikeyPropertiesFile.inputStream())
+    } else {
+        throw GradleException("apikey.properties file not found. Please create it in the root project directory.")
+    }
+
     namespace = "com.jetpack.firebasekit"
     compileSdk = 34
 
@@ -24,7 +40,17 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            buildConfigField("String", "WEB_CLIENT_ID",
+                apikeyProperties["WEB_CLIENT_ID"].toString()
+            )
+        }
+
         release {
+            buildConfigField("String", "WEB_CLIENT_ID",
+                apikeyProperties["WEB_CLIENT_ID"].toString()
+            )
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -41,6 +67,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.7"
@@ -98,5 +125,9 @@ dependencies {
     // Coroutine Lifecycle Scopes
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
 
+    // Coil for image loading library
+    implementation("io.coil-kt:coil-compose:2.5.0")
 
+    /** Animated Compose Bottom navigation */
+    implementation("com.exyte:animated-navigation-bar:1.0.0")
 }

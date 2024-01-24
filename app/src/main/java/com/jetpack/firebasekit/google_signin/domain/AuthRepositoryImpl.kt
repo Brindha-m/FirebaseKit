@@ -8,7 +8,7 @@ import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.GoogleAuthProvider
-import com.jetpack.firebasekit.google_signin.data.AuthStateResponse
+import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.jetpack.firebasekit.google_signin.data.DataProvider
 import com.jetpack.firebasekit.google_signin.data.FirebaseSignInResponse
 import com.jetpack.firebasekit.google_signin.data.OneTapSignInResponse
@@ -16,6 +16,10 @@ import com.jetpack.firebasekit.google_signin.data.Response
 import com.jetpack.firebasekit.google_signin.data.SignOutResponse
 import com.jetpack.firebasekit.google_signin.util.Constants
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 import javax.inject.Named
@@ -30,9 +34,16 @@ class AuthRepositoryImpl @Inject constructor(
     private var signUpRequest: BeginSignInRequest
 
 ) : AuthRepository {
-    override fun getAuthState(viewModelScope: CoroutineScope): AuthStateResponse {
-        TODO("Not yet implemented")
-    }
+    override fun getAuthState(viewModelScope: CoroutineScope) = callbackFlow {
+        val authStateListener = AuthStateListener { auth ->
+            trySend(auth.currentUser)
+            Log.i(TAG, "User: ${auth.currentUser?.uid ?: "Not authenticated"}")
+        }
+        auth.addAuthStateListener(authStateListener)
+        awaitClose {
+            auth.removeAuthStateListener(authStateListener)
+        }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), auth.currentUser)
 
     override suspend fun signInAnonymously(): FirebaseSignInResponse {
         return try {
@@ -49,7 +60,7 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun onTapSignIn(): OneTapSignInResponse {
         return try {
-            val signInResult = oneTapClient.beginSignIn(signInRequest).await()
+            val signInResult = oneTapClient.beginSignIn(signUpRequest).await()
             Response.Success(signInResult)
         } catch (e: Exception) {
             Response.Failure(e)
