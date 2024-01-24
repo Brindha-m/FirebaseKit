@@ -61,8 +61,48 @@ Before building and running the project, you need to set up your Firebase projec
 12. Save the changes.
 
 
+## Storing Secret Keys in Android
 
+1. Create a file called `apiKeys.properties` in  root directory.
+   
+  ```kotlin
+  WEB_CLIENT_ID = "9...435.apps.googleusercontent.com"
+  
+  ```
 
+2. In `build.gradle.kts` (module)
+
+   ```kotlin
+   android {
+   
+      val apikeyPropertiesFile = rootProject.file("apiKeys.properties")
+      val apikeyProperties = Properties()
+  
+      /** Just use it here or separately in release and debug buildtypes. **/
+     
+      defaultConfig {
+           buildConfigField("String", "WEB_CLIENT_ID",
+                  apikeyProperties["WEB_CLIENT_ID"].toString()
+           )
+      }
+  
+      buildTypes {
+          degug {
+             // Build Config field
+          }
+          release {
+               // Build Config field
+          }
+      }
+      
+      buildFeatures {
+          compose = true
+          buildConfig = true
+      }
+   
+   }
+  
+    ```
 
 
 ## Contributing
