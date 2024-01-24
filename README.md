@@ -1,5 +1,3 @@
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
 ### **Firebase Kit** <img src ="https://github.com/Brindha-m/FirebaseKit/assets/72887609/f48f3af0-ce7c-45fa-81fd-00caaf5d80bc" width = "50"/> 
   An Android application showcasing the implementation of Firebase features using **Clean Architecture and MVVM** design pattern.
 
@@ -116,3 +114,4 @@ Before building and running the project, you need to set up your Firebase projec
 
 Feel free to contribute to this project by opening issues, providing feedback, or submitting pull requests. Your contributions are highly appreciated.
 
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
