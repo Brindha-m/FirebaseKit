@@ -5,7 +5,7 @@
 
 | Dark Mode | Light Mode |
 | --- | --- |
-| <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/864b3c82-c1ab-4674-bae5-b0915bd8bea2" width="200" height="400"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/e4983f15-c5ee-44bf-98e7-1d7081154515" width="200" height="400"/> | 
+| <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/864b3c82-c1ab-4674-bae5-b0915bd8bea2" width="346" height="750"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/e4983f15-c5ee-44bf-98e7-1d7081154515" width="346" height="750"/> | 
 
 
 ## Features
@@ -14,7 +14,9 @@
 
     | Google SignIn/SignUp | Profile Screen | Anonymous SignIn (Skip) |
     | --- | --- | --- |
-    | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/00207ebe-ae58-4f81-a494-f7cca3de6aff" width="200" height="400"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/5a0eb4ec-1aa7-40c3-af39-b7673b338fc3" width="200" height="400"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/59549af6-2716-4b23-8086-e8bb156ec405" width="200" height="400"/> |
+    | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/00207ebe-ae58-4f81-a494-f7cca3de6aff" width="346" height="750"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/b823d97f-c373-4c03-b758-70d66a9176c6" width="346" height="750"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/59549af6-2716-4b23-8086-e8bb156ec405" width="346" height="750"/> |
+
+
 
 - **Remote Config:** Dynamic app configuration using Firebase Remote Config.
 
