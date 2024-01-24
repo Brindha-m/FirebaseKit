@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-### **Firebase Kit**
+### **Firebase Kit** <img src ="https://github.com/Brindha-m/FirebaseKit/assets/72887609/f48f3af0-ce7c-45fa-81fd-00caaf5d80bc" width = "50"/> 
   An Android application showcasing the implementation of Firebase features using **Clean Architecture and MVVM** design pattern.
 
 | Dark Mode | Light Mode |
