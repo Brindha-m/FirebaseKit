@@ -42,6 +42,7 @@ Before building and running the project, you need to set up your Firebase projec
 2. Click on the "Gradle" tab on the right side.
 3. Navigate to `Your App -> Tasks -> android -> signingReport`.
 4. Run `signingReport`. The SHA-1 fingerprint will be displayed in the "Run" tab at the bottom.
+
 <img alt="image" src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/325c9979-32e8-4618-abd7-71405fc7454b">
 <img alt="image" src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/1be38811-d39a-400c-bbdc-83345408c1bd">
 
@@ -49,21 +50,16 @@ Before building and running the project, you need to set up your Firebase projec
 
 ### 2. Add the SHA-1 Fingerprint to Firebase:
 
-1. Go to the [Firebase Console](https://console.firebase.google.com/).
-2. Open your Firebase project.
-3. Navigate to "Authentication" in the left-hand menu.
-4. Go to the "Sign-in method" tab.
-5. Enable "Google" as a sign-in provider.
+1. Go to the [Firebase Console](https://console.firebase.google.com/). Open your Firebase project.
+2. Navigate to "Authentication" in the left-hand menu.
+3. Go to the "Sign-in method" tab.
+4. Enable "Google" and "Anonymous" as a sign-in provider.
 
 ![image](https://github.com/Brindha-m/FirebaseKit/assets/72887609/d4ec9da0-8163-4a6b-9f30-c1aae3b80676)
 
-6. In the "Web client ID" section, click on "Download" to download the configuration file.
-7. Save the downloaded `google-services.json` file into your app module.
-8. In the "Project settings" page, navigate to the "General" tab.
-9. Scroll down to the "Your apps" section.
-10. In the "SHA certificate fingerprints" section, click on "Add fingerprint."
-11. Enter the SHA-1 fingerprint obtained in step 1.
-12. Save the changes.
+5. In the "Web client ID" section, copy the client id.
+6. In the "Project settings" page, navigate to the "General" tab.
+7. In the "SHA certificate fingerprints" section, click on "Add fingerprint." and save the changes.
 
 
 ## Storing Secret Keys in Android
@@ -71,7 +67,7 @@ Before building and running the project, you need to set up your Firebase projec
 1. Create a file called `apiKeys.properties` in  root directory.
    
   ```kotlin
-  WEB_CLIENT_ID = "9...435.apps.googleusercontent.com"
+    WEB_CLIENT_ID = "9...435.apps.googleusercontent.com"
   
   ```
 
