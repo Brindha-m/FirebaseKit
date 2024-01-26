@@ -2,7 +2,7 @@
   
   An Android application showcasing the implementation of Firebase features using **Clean Architecture and MVVM** design pattern.
 
-| Dark Mode (Runs on a Emulator) | Light Mode (Real Device) |
+| Dark Mode (Emulator) | Light Mode (Real Device) |
 | --- | --- |
 | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/864b3c82-c1ab-4674-bae5-b0915bd8bea2" width="346" height="750"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/e4983f15-c5ee-44bf-98e7-1d7081154515" width="346" height="750"/> | 
 
