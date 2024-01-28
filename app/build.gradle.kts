@@ -89,6 +89,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.9")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -100,10 +101,11 @@ dependencies {
     // Import the Firebase BoM - Bill of Materials
     implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
 
-    // Add the dependencies for Firebase products you want to use
-    // When using the BoM, don't specify versions in Firebase dependencies
-    // https://firebase.google.com/docs/android/setup#available-libraries
+    // 1. Firebase Authentication
     implementation("com.google.firebase:firebase-auth")
+
+    // 2. Firebase Remote Config
+    implementation("com.google.firebase:firebase-config")
 
     // Add the dependency for the Google Play services library
     implementation("com.google.android.gms:play-services-auth:20.7.0")
@@ -130,4 +132,10 @@ dependencies {
 
     /** Animated Compose Bottom navigation */
     implementation("com.exyte:animated-navigation-bar:1.0.0")
+
+    // Gson - Json to Java Objects
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    //Moshi - modern JSON library for Android
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
 }

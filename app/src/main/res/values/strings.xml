@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">FirebaseKit</string>
-    <string name="web_client_id">923195690255-9kqo0e2bgj94ibi46n67j51h0cam7gff.apps.googleusercontent.com</string>
+    <string name="firebase_kit">Welcome to Firebase Kit</string>
+    <string name="description_of_the_app">Exploring Firebase features</string>
+    <string name="Home">Home Screen</string>
+    <string name="Profile">Profile Screen</string>
+
 </resources>

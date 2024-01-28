@@ -19,26 +19,34 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.jetpack.firebasekit.google_signin.data.AuthState
 import com.jetpack.firebasekit.google_signin.data.DataProvider
+import com.jetpack.firebasekit.google_signin.di.wrapper.RemoteConfigWrapper
 import com.jetpack.firebasekit.google_signin.view.LoginScreen
 import com.jetpack.firebasekit.google_signin.view.navigation.MainBottomScreen
 import com.jetpack.firebasekit.google_signin.view.navigation.Screens
 import com.jetpack.firebasekit.google_signin.viewmodel.GoogleAuthViewModel
 import com.jetpack.firebasekit.ui.theme.FirebaseKitTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
+    @Inject
+    lateinit var remoteConfigWrapper: RemoteConfigWrapper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             FirebaseKitTheme {
+                remoteConfigWrapper.initRemoteConfig()
+
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainScreen()
+                    MainScreen(remoteConfigWrapper)
 
                 }
             }
@@ -47,8 +55,10 @@ class MainActivity : ComponentActivity() {
 }
 
 
+
 @Composable
 fun MainScreen(
+    remoteConfigWrapper: RemoteConfigWrapper,
     authViewModel: GoogleAuthViewModel = hiltViewModel()
 ) {
     val navController = rememberNavController()
@@ -62,7 +72,7 @@ fun MainScreen(
 
         composable(Screens.LoginScreen.route) {
             if (DataProvider.authState != AuthState.SignedOut) {
-                MainBottomScreen(mainNavController = navController)
+                MainBottomScreen(mainNavController = navController, remoteConfigWrapper)
             } else {
                 LoginScreen(navHostController = navController, authViewModel)
             }

@@ -26,6 +26,7 @@ import com.exyte.animatednavbar.animation.indendshape.Height
 import com.exyte.animatednavbar.animation.indendshape.shapeCornerRadius
 import com.exyte.animatednavbar.utils.noRippleClickable
 import com.jetpack.firebasekit.R
+import com.jetpack.firebasekit.google_signin.di.wrapper.RemoteConfigWrapper
 import com.jetpack.firebasekit.google_signin.view.HomeScreen
 import com.jetpack.firebasekit.google_signin.view.ProfileScreen
 
@@ -33,7 +34,8 @@ import com.jetpack.firebasekit.google_signin.view.ProfileScreen
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainBottomScreen(
-    mainNavController: NavHostController
+    mainNavController: NavHostController,
+    remoteConfigWrapper: RemoteConfigWrapper
 ) {
     val navigationBarItems = remember {
         NavigationBarItems.values()
@@ -78,7 +80,7 @@ fun MainBottomScreen(
     ) {
         // Display different content based on the selectedIndex
         when (navigationBarItems[selectedIndex]) {
-            NavigationBarItems.Home -> HomeScreen()
+            NavigationBarItems.Home -> HomeScreen(remoteConfigWrapper)
             NavigationBarItems.Profile -> ProfileScreen(navHostController = mainNavController)
             else -> {}
         }
