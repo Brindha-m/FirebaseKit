@@ -117,7 +117,8 @@ Before building and running the project, you need to set up your Firebase projec
 2. Configure the parameter with a key, default value, and optional description.
 3. After setting up parameters, click on "**Publish Changes**" to make them live.
 4. You can provide default values for Firebase Remote Config in Android Studio either using an XML file (R.xml) or directly in Kotlin code.
-   
+5. For Sample JSON data [Click here](https://gist.githubusercontent.com/Brindha-m/fd3bf58ad0aa65b4919e4ce720de2251/raw/aeaa89221baec0107891888fdec8c5add5470f34/remoteConfig.json)
+
 <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/579eba0d-f055-4162-b47d-e46cfa702a12">
 <img alt="image" src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/fc6d294a-fcdd-43de-9f40-468c405e5724">
 
