@@ -12,9 +12,9 @@
 
 - **Firebase Authentication:** Implementing user authentication using Firebase Authentication [Google Sign and Anonymous].
 
-  | Google SignIn/SignUp | Profile Screen | Anonymous SignIn (Skip) |
-  | --- | --- | --- |
-  | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/00207ebe-ae58-4f81-a494-f7cca3de6aff" width="240" height="550"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/b823d97f-c373-4c03-b758-70d66a9176c6" width="240" height="550"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/59549af6-2716-4b23-8086-e8bb156ec405" width="240" height="550"/> |
+| Google SignIn/SignUp | Profile Screen | Anonymous SignIn (Skip) |
+| --- | --- | --- |
+| <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/00207ebe-ae58-4f81-a494-f7cca3de6aff" width="240" height="550"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/b823d97f-c373-4c03-b758-70d66a9176c6" width="240" height="550"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/59549af6-2716-4b23-8086-e8bb156ec405" width="240" height="550"/> |
 
 
 - **Remote Config:** Dynamic app configuration using Firebase Remote Config.
@@ -109,6 +109,57 @@ Before building and running the project, you need to set up your Firebase projec
    }
   
     ```
+
+
+## Remote Config Essentials
+
+1. In Firebase console navigate to **Remote Config dashboard**. Click on "**Add Parameter**" to define a new parameter.
+2. Configure the parameter with a key, default value, and optional description.
+3. After setting up parameters, click on "**Publish Changes**" to make them live.
+4. You can provide default values for Firebase Remote Config in Android Studio either using an XML file (R.xml) or directly in Kotlin code.
+   
+<img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/579eba0d-f055-4162-b47d-e46cfa702a12">
+<img alt="image" src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/fc6d294a-fcdd-43de-9f40-468c405e5724">
+
+
+### Using XML (R.xml file):
+
+1. Create an XML file in the `res/xml` directory, e.g., `remote_config_defaults.xml`:
+
+   ```xml
+   <!-- res/xml/remote_config_defaults.xml -->
+   <defaultsMap>
+       <entry>
+           <key>your_parameter_key</key>
+           <value>default_value</value>
+       </entry>
+   </defaultsMap>
+   ```
+
+2. In your Kotlin code, set the default values using the resource ID:
+
+   ```kotlin
+   val defaultResId = R.xml.remote_config_defaults
+   firebaseRemoteConfig.setDefaultsAsync(defaultResId)
+   ```
+
+### Directly in Kotlin:
+
+```kotlin
+val firebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
+val configSettings = FirebaseRemoteConfigSettings.Builder()
+    .setMinimumFetchIntervalInSeconds(3600) // 1 hour
+    .build()
+firebaseRemoteConfig.setConfigSettingsAsync(configSettings)
+
+// Set default values directly in Kotlin
+firebaseRemoteConfig.setDefaultsAsync(
+    mapOf(
+        "your_parameter_key" to "default_value",
+        // Add more entries as needed
+    )
+)
+```
 
 
 ## Contributing
