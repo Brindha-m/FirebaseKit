@@ -2,9 +2,9 @@
   
   An Android application showcasing the implementation of Firebase features using **Clean Architecture and MVVM** design pattern.
 
-| Dark Mode (Emulator) | Light Mode (Real Device) | Remote Config Home Screen |
-| --- | --- | --- |
-| <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/864b3c82-c1ab-4674-bae5-b0915bd8bea2" width="240" height="550"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/e4983f15-c5ee-44bf-98e7-1d7081154515" width="240" height="550"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/f85011b4-071b-4573-aa46-c0f3eaec767d" width="240" height="550"/> | 
+| Dark Mode (Emulator) | Light Mode (Real Device) |
+| --- | --- |
+| <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/864b3c82-c1ab-4674-bae5-b0915bd8bea2" width="240" height="550"/> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/e4983f15-c5ee-44bf-98e7-1d7081154515" width="240" height="550"/> | 
 
 
 
@@ -21,7 +21,7 @@
 
 | Remote Config (Dark) | Remote Config (Light) |
 | --------| --------|
-| <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/561a2248-7f4c-4c7b-89df-11978ef405f3"  width="250" height="600"> | <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/844660a5-127f-47a9-a7e9-68f0599c3356"  width="250" height="600"> | 
+| <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/f85011b4-071b-4573-aa46-c0f3eaec767d" width="250" height="600"/> |  <img src="https://github.com/Brindha-m/FirebaseKit/assets/72887609/844660a5-127f-47a9-a7e9-68f0599c3356"  width="250" height="600"> | 
 
 ## Architecture
 
